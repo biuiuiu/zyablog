@@ -6,6 +6,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,6 +18,8 @@ import com.zya.blog.zyablog.entity.User;
 @Consumes(value = MediaType.APPLICATION_JSON)
 @Produces(value = MediaType.APPLICATION_JSON)
 public class UserTestResource {
+	
+	private static final Logger logger = Logger.getLogger(UserTestResource.class);
 	
 	@Autowired
 	private UserDao dao;
