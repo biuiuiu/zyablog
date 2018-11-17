@@ -3,6 +3,302 @@
 <mapper namespace="com.zya.blog.zyablog.dao.UserDao">
   <resultMap id="BaseResultMap" type="com.zya.blog.zyablog.entity.User">
     <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="ACOUNT" jdbcType="VARCHAR" property="acount" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SEX" jdbcType="BIT" property="sex" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="LOVER" jdbcType="VARCHAR" property="lover" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+    <result column="ROLE_ID" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACOUNT, NAME, SEX, PASSWORD, LOVER, PHONE, CREATE_DATE, LAST_UPDATE_DATE, ROLE_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_blog_user
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_blog_user
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zya.blog.zyablog.entity.User">
+    insert into t_blog_user (ID, ACOUNT, NAME, 
+      SEX, PASSWORD, LOVER, PHONE, 
+      CREATE_DATE, LAST_UPDATE_DATE, ROLE_ID
+      )
+    values (#{id,jdbcType=BIGINT}, #{acount,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{password,jdbcType=VARCHAR}, #{lover,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{roleId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zya.blog.zyablog.entity.User">
+    insert into t_blog_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="acount != null">
+        ACOUNT,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="lover != null">
+        LOVER,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="acount != null">
+        #{acount,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lover != null">
+        #{lover,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateDate != null">
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zya.blog.zyablog.entity.User">
+    update t_blog_user
+    <set>
+      <if test="acount != null">
+        ACOUNT = #{acount,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=BIT},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lover != null">
+        LOVER = #{lover,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleId != null">
+        ROLE_ID = #{roleId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zya.blog.zyablog.entity.User">
+    update t_blog_user
+    set ACOUNT = #{acount,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=BIT},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      LOVER = #{lover,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      ROLE_ID = #{roleId,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.zya.blog.zyablog.entity.User">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="ACOUNT" jdbcType="VARCHAR" property="acount" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SEX" jdbcType="BIT" property="sex" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="LOVER" jdbcType="VARCHAR" property="lover" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+    <result column="ROLE_ID" jdbcType="BIGINT" property="roleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACOUNT, NAME, SEX, PASSWORD, LOVER, PHONE, CREATE_DATE, LAST_UPDATE_DATE, ROLE_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_blog_user
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_blog_user
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zya.blog.zyablog.entity.User">
+    insert into t_blog_user (ID, ACOUNT, NAME, 
+      SEX, PASSWORD, LOVER, PHONE, 
+      CREATE_DATE, LAST_UPDATE_DATE, ROLE_ID
+      )
+    values (#{id,jdbcType=BIGINT}, #{acount,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{password,jdbcType=VARCHAR}, #{lover,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{roleId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zya.blog.zyablog.entity.User">
+    insert into t_blog_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="acount != null">
+        ACOUNT,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="lover != null">
+        LOVER,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="acount != null">
+        #{acount,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lover != null">
+        #{lover,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateDate != null">
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zya.blog.zyablog.entity.User">
+    update t_blog_user
+    <set>
+      <if test="acount != null">
+        ACOUNT = #{acount,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=BIT},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="lover != null">
+        LOVER = #{lover,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roleId != null">
+        ROLE_ID = #{roleId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zya.blog.zyablog.entity.User">
+    update t_blog_user
+    set ACOUNT = #{acount,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=BIT},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      LOVER = #{lover,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      ROLE_ID = #{roleId,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.zya.blog.zyablog.entity.User">
+    <id column="ID" jdbcType="BIGINT" property="id" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="AGE" jdbcType="INTEGER" property="age" />
     <result column="PHONE" jdbcType="VARCHAR" property="phone" />
@@ -12,13 +308,15 @@
     <result column="CREATE_USER" jdbcType="BIGINT" property="createUser" />
     <result column="LAST_UPDATE_USER" jdbcType="BIGINT" property="lastUpdateUser" />
   </resultMap>
-
-  <select id="getList" resultMap="BaseResultMap">
+  <sql id="Base_Column_List">
+    ID, NAME, AGE, PHONE, EMAIL, CREATE_DATE, LAST_UPDATE_DATE, CREATE_USER, LAST_UPDATE_USER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
-    *
+    <include refid="Base_Column_List" />
     from t_test_user
+    where ID = #{id,jdbcType=BIGINT}
   </select>
-  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_test_user
     where ID = #{id,jdbcType=BIGINT}

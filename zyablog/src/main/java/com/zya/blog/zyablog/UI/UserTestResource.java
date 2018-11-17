@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.zya.blog.zyablog.dao.UserDao;
-import com.zya.blog.zyablog.entity.User;
 
 @Controller
 @Path(value = "zyablog")
@@ -26,8 +25,7 @@ public class UserTestResource {
 
 	@GET
 	@Path(value = "getUserList")
-	public User getUserList(){
-		return dao.getList();
+	public void getUserList(){
 	}
 	
 }

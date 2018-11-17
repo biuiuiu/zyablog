@@ -4,25 +4,34 @@ import java.util.Date;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+/**
+ * 用户bean
+ * 
+ * @author an
+ *
+ */
 public class User {
 	private Long id;
 
+	private String acount;
+
 	private String name;
 
-	private Integer age;
+	private Boolean sex;
+
+	private String password;
+
+	private String lover;
 
 	private String phone;
 
-	private String email;
-
-	@JSONField(format = "yyyy-MM-dd : HH:mm:ss")
+	@JSONField(format = "yyyy-MM-dd:HH:mm:ss")
 	private Date createDate;
 
+	@JSONField(format = "yyyy-MM-dd:HH:mm:ss")
 	private Date lastUpdateDate;
 
-	private Long createUser;
-
-	private Long lastUpdateUser;
+	private Long roleId;
 
 	public Long getId() {
 		return id;
@@ -30,6 +39,14 @@ public class User {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getAcount() {
+		return acount;
+	}
+
+	public void setAcount(String acount) {
+		this.acount = acount == null ? null : acount.trim();
 	}
 
 	public String getName() {
@@ -40,12 +57,28 @@ public class User {
 		this.name = name == null ? null : name.trim();
 	}
 
-	public Integer getAge() {
-		return age;
+	public Boolean getSex() {
+		return sex;
 	}
 
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setSex(Boolean sex) {
+		this.sex = sex;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password == null ? null : password.trim();
+	}
+
+	public String getLover() {
+		return lover;
+	}
+
+	public void setLover(String lover) {
+		this.lover = lover == null ? null : lover.trim();
 	}
 
 	public String getPhone() {
@@ -54,14 +87,6 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone == null ? null : phone.trim();
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email == null ? null : email.trim();
 	}
 
 	public Date getCreateDate() {
@@ -80,19 +105,11 @@ public class User {
 		this.lastUpdateDate = lastUpdateDate;
 	}
 
-	public Long getCreateUser() {
-		return createUser;
+	public Long getRoleId() {
+		return roleId;
 	}
 
-	public void setCreateUser(Long createUser) {
-		this.createUser = createUser;
-	}
-
-	public Long getLastUpdateUser() {
-		return lastUpdateUser;
-	}
-
-	public void setLastUpdateUser(Long lastUpdateUser) {
-		this.lastUpdateUser = lastUpdateUser;
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
 	}
 }

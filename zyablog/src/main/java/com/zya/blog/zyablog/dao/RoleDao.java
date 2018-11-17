@@ -3,12 +3,12 @@ package com.zya.blog.zyablog.dao;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 用户dao
+ * 角色dao
  * 
  * @author an
  *
  */
 @Mapper
-public interface UserDao {
+public interface RoleDao {
 
 }
