@@ -79,10 +79,13 @@ public class MyshiroRealm extends AuthorizingRealm {
 			return null;
 		}else {
 			//设置MD5加密，盐值为null
+			//构造函数第二个参数是数据库的密码
 			SimpleAuthenticationInfo info = 
-					new SimpleAuthenticationInfo(userName, token.getCredentials(), null, this.getClass().getName());
+					new SimpleAuthenticationInfo(userName, user.getPassword(), null, this.getClass().getName());
 			return info;
 		}
 	}
+	
+	
 
 }

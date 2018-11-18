@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
@@ -18,6 +19,7 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.zya.blog.zyablog.UI.UserTestResource;
 
 @SpringBootApplication
+@EnableScheduling
 public class ZyablogApplication {
 
 	public static void main(String[] args) {

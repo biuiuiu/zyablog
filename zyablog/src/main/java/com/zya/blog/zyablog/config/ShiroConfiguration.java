@@ -3,6 +3,8 @@ package com.zya.blog.zyablog.config;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -19,6 +21,7 @@ public class ShiroConfiguration {
 	@Bean
 	public MyshiroRealm myShiroRealm() {
 		MyshiroRealm myShiroRealm = new MyshiroRealm();
+		myShiroRealm.setCredentialsMatcher(credentialsMatcher());//添加密码加密以及错误尝试次数设置
 		return myShiroRealm;
 	}
 
@@ -58,6 +61,13 @@ public class ShiroConfiguration {
 		AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
 		authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
 		return authorizationAttributeSourceAdvisor;
+	}
+	
+	//自定义验证密码方法
+	@Bean
+	public CredentialsMatcher credentialsMatcher(){
+		RetryLimitHashedCredentialsMatcher matcher = new RetryLimitHashedCredentialsMatcher("MD5");
+		return matcher;
 	}
 
 }
