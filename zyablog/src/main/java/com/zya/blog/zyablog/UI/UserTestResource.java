@@ -26,6 +26,7 @@ public class UserTestResource {
 	@GET
 	@Path(value = "getUserList")
 	public void getUserList(){
+		System.out.println("2");
 	}
 	
 }

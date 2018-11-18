@@ -1,0 +1,18 @@
+package com.zya.blog.zyablog.util;
+
+import org.apache.shiro.crypto.hash.SimpleHash;
+
+/**
+ * MD5加密工具类
+ * 
+ * @author an
+ *
+ */
+public class MD5Util {
+	public static String getMD5(String password) {
+		String hashAlgorithmName = "MD5";
+		// 参数salt为null表示不加盐，此处与realm的实现类SimpleAuthenticationInfo方法保持一致
+		SimpleHash obj = new SimpleHash(hashAlgorithmName, password, null);
+		return obj.toString();
+	}
+}
