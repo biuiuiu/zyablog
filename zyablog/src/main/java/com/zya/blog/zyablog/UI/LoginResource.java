@@ -1,6 +1,7 @@
 package com.zya.blog.zyablog.UI;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -87,5 +88,15 @@ public class LoginResource {
 		}else {
 			return new ResponseVO("2", "验证失败", null);
 		}
+	}
+	
+	@GET
+	@Path(value = "logout")
+	public void logout(){
+		Subject subject = SecurityUtils.getSubject();
+		User user = (User) subject.getSession().getAttribute("user");
+		System.out.println(user.getAcount());
+		subject.logout();
+		subject.getSession().stop();
 	}
 }
