@@ -99,4 +99,11 @@ public class LoginResource {
 		subject.logout();
 		subject.getSession().stop();
 	}
+	
+	@GET
+	@Path(value = "gets")
+	public User getUser(){
+		System.out.println("2");
+		return new User();
+	}
 }

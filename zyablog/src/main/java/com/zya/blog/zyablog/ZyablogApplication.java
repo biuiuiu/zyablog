@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -20,6 +21,7 @@ import com.zya.blog.zyablog.UI.UserTestResource;
 
 @SpringBootApplication
 @EnableScheduling
+@ServletComponentScan
 public class ZyablogApplication {
 
 	public static void main(String[] args) {
