@@ -11,6 +11,15 @@ import com.alibaba.fastjson.annotation.JSONField;
  *
  */
 public class User {
+
+	public User() {
+	}
+
+	public User(String acount, String name) {
+		this.acount = acount;
+		this.name = name;
+	}
+
 	private Long id;
 
 	private String acount;

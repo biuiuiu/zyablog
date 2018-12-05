@@ -25,6 +25,7 @@ import com.zya.blog.zyablog.entity.Role;
 import com.zya.blog.zyablog.entity.User;
 import com.zya.blog.zyablog.service.RoleService;
 import com.zya.blog.zyablog.service.UserService;
+import com.zya.blog.zyablog.util.ConstantValue;
 import com.zya.blog.zyablog.util.RoleEnum;
 
 public class MyshiroRealm extends AuthorizingRealm {
@@ -55,9 +56,9 @@ public class MyshiroRealm extends AuthorizingRealm {
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		// 添加角色列表
 		info.addRole(role.getRoleName());
-		if (RoleEnum.guest.equals(role.getRoleName())) {
+		if (ConstantValue.ROLE_GUEST.equals(role.getRoleName())) {
 			info.addStringPermissions(new HashSet<>(Arrays.asList(guestPerm.split(","))));
-		} else if (RoleEnum.admin.equals(role.getRoleName())) {
+		} else if (ConstantValue.ROLE_ADMIN.equals(role.getRoleName())) {
 			info.addStringPermissions(new HashSet<>(Arrays.asList(adminPerm.split(","))));
 		}
 		return info;
